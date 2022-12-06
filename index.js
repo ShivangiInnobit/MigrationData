@@ -7,6 +7,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log("Connection Successful!");
 
+   // let oldTenantID = '82f2cfc3-a528-4de2-a740-dc37d9a120a2'; // id from elastic search
+    let newTenantId = ' d4123b58-88b0-4f11-ad6c-d1676a3409aa' // same tenant Id from qa env (new systems)
+
     
 //Client  for elasticsearch
     client.ping({
@@ -28,16 +31,14 @@ db.once('open', function () {
             type: '_doc',
             body: {
                 query: {
-                    match: { "tenantId": "82f2cfc3-a528-4de2-a740-dc37d9a120a2" }
-                    //"match_all": {}
-                },
-                "tenantId":
+                    match: { "source.tenantId":"905c6e3f-a2d1-4ec3-bb7b-abb5202054b3"}
+
+                   // "match_all": {}
+                
+                }
             }
             
-        }
-        ,
-        
-        
+        },        
             function (error, response, status) {
 
                 if (error) {
@@ -51,7 +52,7 @@ db.once('open', function () {
                     console.log(response.hits.hits)
                     response.hits.hits.forEach(function (hit) {
                         elasticData = {
-                            tenantId: hit._source.source.tenantId,
+                            tenantId: newTenantId,
                             batchId: hit._source.source.batchId,
                             userId: hit._source.source.lastOperator.id,
                             processId: hit._source.source.processId,
@@ -61,12 +62,7 @@ db.once('open', function () {
                             productExperienceTenantId: hit._source.source.metadata.product.experienceTenantId,
                             productUpc: hit._source.source.metadata.product.UPC,
                             status: hit._source.source.status,
-                            //  site: hit._source.source.factory
-                        }
-                        console.log("elasticData",elasticData.tenantId)
-                        let tntId = "82f2cfc3-a528-4de2-a740-dc37d9a120a2"
-                        if(tntId){
-
+                        
                         }
                         final.push(elasticData)
                     })
