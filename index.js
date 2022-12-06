@@ -7,8 +7,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log("Connection Successful!");
 
-   // let oldTenantID = '82f2cfc3-a528-4de2-a740-dc37d9a120a2'; // id from elastic search
-    let newTenantId = ' d4123b58-88b0-4f11-ad6c-d1676a3409aa' // same tenant Id from qa env (new systems)
+    let newTenantId = ' d4123b58-88b0-4f11-ad6c-d1676a3409aa' 
 
     
 //Client  for elasticsearch
