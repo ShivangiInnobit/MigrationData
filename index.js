@@ -7,7 +7,10 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log("Connection Successful!");
 
-    let newTenantId = ' d4123b58-88b0-4f11-ad6c-d1676a3409aa' 
+
+ 
+    let newTenantId = '851204a5-4e72-47fd-9bc5-6ce90dd7face
+    
 
     
 //Client  for elasticsearch
@@ -55,7 +58,7 @@ db.once('open', function () {
                             batchId: hit._source.source.batchId,
                             userId: hit._source.source.lastOperator.id,
                             processId: hit._source.source.processId,
-                            productId: hit._source.source.productId,
+                            productId: hit._source.source.metadata.product.UPC,
                             productExperienceId: hit._source.source.metadata.product.experienceId,
                             productExperienceStudioId: hit._source.source.metadata.product.experienceStudioId,
                             productExperienceTenantId: hit._source.source.metadata.product.experienceTenantId,
