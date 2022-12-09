@@ -8,29 +8,7 @@ db.once('open', function () {
     console.log("Connection Successful!");
 
     let newTenantId = '851204a5-4e72-47fd-9bc5-6ce90dd7face'
-    let newProduct = [
-        { '24f7a778-5c0c-4fe9-aa69-598ba7cc2b0b': '' },
-        { '3076f8d1-83ef-44f5-a655-408fdf40d302': '' },
-        { '6341de62-5b49-439d-92da-7ce39b2763eb': '' },
-        { 'bac39e75-2055-45cd-86a5-7114acd20ccb': '' },
-        { '9334f260-3429-4b95-b642-1ba884b2a49d': '' },
-        { '439af75f-4a58-4453-972a-727f9e0a3da9': '' },
-        { 'ecebc62b-a81d-4bbf-adde-aa8d8b21cf68': '' },
-        { 'bb9c9c18-a747-40a4-aaaa-09284fbfe1c8': '' },
-        { '195a7feb-f668-41cd-951a-a400e52689c2': '' },
-        { '50a1a093-f33d-442f-9ef4-d5e9bbffab1c': '' },
-        { '2ddc24c3-4d7d-405a-be44-cd3899381972': '' },
-        { '06be0f1a-0156-46ca-93e4-6cf5bcd305a6': '' },
-        { 'c138c609-ac25-49df-83d8-584827577c8a': '' },
-        { '3f6cc2f8-512b-49a6-8880-10de954ee652': '' },
-        { '5d694d42-0652-45a3-b983-0a565b8473b3': '' },
-        { '372b2351-e703-4390-b763-58bab9737dde': '' },
-        { '9a36f9e5-537e-4df7-8f8a-cf0bafc0efcd': '' },
-        { 'cc761b5e-cc6f-46a2-8139-db43a5ec8d7d': '' },
-        { '3ec29566-790b-4ea0-83c3-9d605b828c30': '' },
-        { 'e3b26660-466a-40d8-8bed-710cd83a6a9e': '' }
 
-    ]
 
     let newProcesses = [
         { 'de68790d-8e11-466e-9eb6-f59b156d4afc': 'dd7b688e-46c6-4a0e-a7f7-8da3852e37e7' },
@@ -92,11 +70,7 @@ db.once('open', function () {
                             let key = Object.keys(item)
                             return key[0] === id;
                         });
-                        let pId = hit._source.source.productId
-                        var productArry = newProduct.filter(function (item) {
-                            let key = Object.keys(item)
-                            return key[0] === pId;
-                        })
+
                         enablementData = {
                             tenantId: newTenantId,
                             userId: hit._source.source.lastOperator.id,
