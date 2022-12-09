@@ -7,8 +7,10 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log("Connection Successful!");
 
+
  
-    let newTenantId = '851204a5-4e72-47fd-9bc5-6ce90dd7face' 
+    let newTenantId = '851204a5-4e72-47fd-9bc5-6ce90dd7face
+    
 
     
 //Client  for elasticsearch
